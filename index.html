@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form with Validation</title>
+    <link rel="stylesheet" href="Navbar.css" />
+    <link rel="stylesheet" href="Form.css" />
+    <style>
+      /* General error styling */
+    </style>
+  </head>
+
+  <body id="navbarId">
+    <nav class="navbar" >
+      <div class="container">
+        <h1>TMS</h1>
+        <div class="container-box">
+          <ul id="open-navbar">
+            <li><a href="#">Add Task</a></li>
+            <li><a href="#pending">Pending Task</a></li>
+            <li><a href="#completed">Success Task</a></li>
+          </ul>
+        </div>
+        <div class="nav-btn">
+          <button class="btn" id="btn">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Form Section -->
+    <section class="form">
+      <div class="form-container">
+        <h1>Form with Validation</h1>
+        <form id="dataForm" class="dataForm">
+          <!-- Task Name Input -->
+          <div class="form-group name1">
+            <label for="TaskName">Task name</label>
+            <input type="text" id="TaskName" name="TaskName" />
+            <div class="error" id="TaskNameError"></div>
+          </div>
+
+          <!-- Status Dropdown -->
+          <div class="form-group">
+            <label for="gender">Status</label>
+            <select id="gender" name="gender">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="error" id="genderError"></div>
+          </div>
+
+          <!-- Description Input -->
+          <div class="form-group" id="form-group-description">
+            <label for="discription">Description</label>
+            <textarea id="discription" name="discription"></textarea>
+            <div class="error" id="discriptionError"></div>
+          </div>
+
+          <!-- Start Date Input -->
+          <div class="form-group startDate">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" />
+            <div class="error" id="startDateError"></div>
+          </div>
+
+          <!-- End Date Input -->
+          <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" />
+            <div class="error" id="endDateError"></div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="formSubmitButton">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Local Storage Display Section -->
+    <div class="data-display">f
+      <h1 id="pending" >Pending Task</h1>
+      <div id="pendingTasksDisplay" ></div>
+      <div id="dataDisplay"></div>
+
+
+
+      <h1 id="completed">Completed Task</h1>
+      <div id="completedTasksDisplay"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
