@@ -107,7 +107,7 @@ nav .btn {
   .container-box ul li {
     padding: 26px;
   }
-  nav .container-box ul.open {
+ .open-navbar.open {
     display: flex;
     height: 100vh;
     margin-top: 65px;

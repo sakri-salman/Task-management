@@ -1,51 +1,35 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Navbar functionality
-  function Navbar(toggleButtonId, navbarId) {
-    const toggleButton = document.getElementById(toggleButtonId); // Retrieve the toggle button element
-    const navbar = document.getElementById(navbarId); // Retrieve the navbar element
+  const toggleBtn = document.getElementById("btn");
+  const openNavBtn = document.getElementById("open-navbar");
 
-    if (!toggleButton || !navbar) {
-      console.error("Navbar: Missing required elements."); // Log error if elements are missing
+  if (!toggleBtn || !openNavBtn) {
+    console.error("Required elements not found in the DOM.");
+    return;
+  }
+
+  function openNavbar() {
+    openNavBtn.classList.toggle("open");
+    toggleBtn.classList.toggle("open");
+    console.log("Navbar open");
+  }
+
+  function closeNavbar(e) {
+    // Check if the navbar is open before proceeding
+    if (!openNavBtn.classList.contains("open")) {
       return;
     }
 
-    // Function to toggle the navbar visibility
-    function toggleNavbar(e) {
-      e.stopPropagation(); // Prevent event propagation to avoid unintended closures
-      navbar.classList.toggle("open"); // Toggle the "open" class to show/hide the navbar
+    // Close the navbar only if the click is outside both elements
+    if (!toggleBtn.contains(e.target) && !openNavBtn.contains(e.target)) {
+      openNavBtn.classList.remove("open");
+      toggleBtn.classList.remove("open");
+      console.log("Navbar closed");
     }
-
-    // Function to close the navbar
-    function closeNavbar() {
-      if (navbar.classList.contains("open")) {
-        navbar.classList.remove("open"); // Remove "open" class to hide the navbar
-      }
-    }
-
-    // Add event listeners for toggling and closing the navbar
-    toggleButton.addEventListener("click", toggleNavbar);
-    document.addEventListener("click", closeNavbar);
-
-    // Prevent clicks inside the navbar from closing it
-    navbar.addEventListener("click", (e) => e.stopPropagation());
-
-    // Close the navbar when clicking on a list item or link
-    navbar.querySelectorAll("li, a").forEach((item) => {
-      item.addEventListener("click", closeNavbar);
-    });
   }
 
-  // Initialize the Navbar function
-  Navbar("btn", "open-navbar");
+  toggleBtn.addEventListener("click", openNavbar);
+  document.addEventListener("click", closeNavbar);
 
-
-
-
-
-
-
-  
   // Initialize Task Manager functionality
   function TaskManager() {
     const LOCAL_STORAGE_KEY = "formData"; // Key for storing task data in local storage
@@ -65,15 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     displayValues(); // Display existing tasks
     displayCompletedTasks(); // Display completed tasks
 
-
-
-
     form.addEventListener("submit", (event) => handleSubmit(event)); // Handle form submission
-
-
-
-
-
 
     // Function to create a cancel button for updates
     function createCancelButton() {
@@ -275,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Check if adding a new task
         existingData.push(formData); // Add new task
         saveToLocalStorage(LOCAL_STORAGE_KEY, existingData); // Save to local storagefff
-        alert("Task added successfully!"); // Confirmation message for new tasksfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        alert("Task added successfully!"); // Confirmation message for new tasks
       } else {
         // Updating an existing task
         if (window.confirm("Do you want to update this task?")) {

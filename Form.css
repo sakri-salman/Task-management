@@ -27,8 +27,7 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.data-display
- h1 {
+.data-display h1 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -88,13 +87,13 @@ button:hover {
   grid-column: 2 / span 1;
 }
 
-
-
 /* Responsive Form */
 @media (max-width: 600px) {
   form {
     grid-template-columns: 1fr;
     /* Single column layout */
+    flex-direction: column;
+    display: flex;
   }
 
   .form-group,
